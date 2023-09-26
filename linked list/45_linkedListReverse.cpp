@@ -29,25 +29,42 @@ void print(Node *&head) // this function will print the data of all node
     }
     cout << endl;
 }
-void reverseLinkedList(Node *&head,Node *&tail ){
-        tail=head;
-        Node * prev=NULL;
-        Node *Current=head;
-        while(Current!=NULL){
-            Node * forward=Current->next;
-            Current->next=prev;
-            prev=Current;
-            Current=forward;
+//*******************First approach using Iteration*************************************
 
-        }
-        head=prev;
+// void reverseLinkedList(Node *&head,Node *&tail ){
+//         tail=head;
+//         Node * prev=NULL;
+//         Node *Current=head;
+//         while(Current!=NULL){
+//             Node * forward=Current->next;
+//             Current->next=prev;
+//             prev=Current;
+//             Current=forward;
+
+//         }
+//         head=prev;
         
-}
+// }
+//**********************Second approach using reursion************************************************
+void reverseLinkedList(Node *&head,Node * prev,Node* current ){
+    if(current==NULL){
+        head=prev;
+        return;
+    }
+    Node *forward=current->next;
+    current->next=prev;
+    reverseLinkedList(head,current,forward);
+    
+    
+    }
+
 int main()
 {
     Node *Node1 = new Node(10); // creating object of Node type
     Node *head = Node1;   
-    Node * tail= Node1;      // pointer thet point to head
+    Node * tail= Node1;      // pointer thet point to 
+    Node * current=Node1;
+    Node * prev=NULL;
     print(head);                // printing data of all node created till now
 
     insertAtHead(head, 20); // inserting new node at head
@@ -59,12 +76,13 @@ int main()
     insertAtHead(head, 56);
     insertAtHead(head, 78);
     print(head);
-    cout<<tail<<endl;
+   
     cout<<head<<endl;
+    cout<<tail<<endl;
     cout<<"reverse order linkedlist"<<endl;
-    reverseLinkedList(head,tail);
+    reverseLinkedList(head,NULL,head);
     print(head);
-    cout<<tail<<endl;
     cout<<head<<endl;
+    
 
 }
