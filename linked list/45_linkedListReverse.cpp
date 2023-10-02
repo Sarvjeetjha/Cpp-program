@@ -86,3 +86,30 @@ int main()
     
 
 }
+
+
+
+void reverse(Node * &head){
+    Node* prev=NULL;
+    Node * current=head;
+    while(current!=NULL){
+        Node * forward=current->next;
+        current->next=prev;
+        prev=current;
+        current=forward;
+
+    }
+    head=prev;
+}
+
+
+void reverse(Node*&head,Node * current,Node *previous){
+    if(current==NULL){
+        head=previous;
+        return;
+    }
+    Node * forward=current->next;
+    current->next=previous;//it can be used below recursive call also
+    reverse(head,forward,current);
+   
+}
