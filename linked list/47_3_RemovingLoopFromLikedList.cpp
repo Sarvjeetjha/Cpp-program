@@ -82,7 +82,7 @@ Node * findPosition(Node * head){
         intersectionPoint=intersectionPoint->next;
     }
     return slow;
-}
+}           
 //******************remove loop from  Linked list ***************
 void removeLoop(Node * head){
     if(head==NULL)
