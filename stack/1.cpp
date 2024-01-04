@@ -3,7 +3,7 @@
 using namespace std;
 //stack using stl
 int main(){
-
+    int a;
     stack<int>s;
     s.push(2);
     s.push(3);
